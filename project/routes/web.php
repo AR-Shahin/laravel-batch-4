@@ -5,9 +5,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('frontend.home');
+    return view('welcome');
 });
 
-Route::get('/admin', function () {
-    return view('backend.auth.login');
-});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';
+require __DIR__ . '/admin_auth.php';

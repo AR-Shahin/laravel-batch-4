@@ -5,9 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('admin')->name('admin.')->group(function () {
-
-    # DashBoard
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 Route::get('/admin', function () {

@@ -1,11 +1,11 @@
 @extends('layouts.admin_app')
 
 @section('app_content')
-    @includeIf('backend.includes.navbar')
+    @includeIf('admin.includes.navbar')
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    @includeIf('backend.includes.sidebar')
+    @includeIf('admin.includes.sidebar')
 
 
     <!-- Content Wrapper. Contains page content -->
@@ -23,7 +23,7 @@
     </div>
     <!-- /.content-wrapper -->
 
-    @includeIf('backend.includes.footer')
+    @includeIf('admin.includes.footer')
     <!-- /.control-sidebar -->
 
 @stop

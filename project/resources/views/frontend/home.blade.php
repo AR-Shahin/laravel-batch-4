@@ -10,6 +10,7 @@
     <title>Mediumish - A Medium style template by WowThemes.net</title>
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('frontend') }}/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">

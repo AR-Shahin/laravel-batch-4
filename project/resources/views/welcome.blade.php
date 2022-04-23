@@ -18,7 +18,7 @@
 </head>
 
 <body>
-
+    {{ sayHello('Shahin') }}
     <!-- Begin Nav
 ================================================== -->
     <nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">

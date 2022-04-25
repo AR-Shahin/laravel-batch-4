@@ -27,10 +27,12 @@ Route::prefix('users')->controller(AuthController::class)->group(function () {
 
 
 # Product
-
-Route::prefix('products')->middleware('auth:jwt_auth')->controller(ProductController::class)->group(function () {
+// ->middleware('auth:jwt_auth')
+Route::prefix('products')->controller(ProductController::class)->group(function () {
     Route::get('/', 'index');
     Route::post('/', 'store');
+    Route::get('view/{id}', 'view');
+    Route::post('delete/{id}', 'delete');
 });
 
 

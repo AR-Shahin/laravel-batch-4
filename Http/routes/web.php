@@ -14,11 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/login', [DashboardController::class, 'viewLogin']);
+Route::get('/register', function () {
+    return view('register');
+});
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/create', function () {
     return view('create');
 });
+
+
 Route::get('/home', [DashboardController::class, 'index']);
 Route::post('/store', [DashboardController::class, 'store']);
+Route::post('/auth', [DashboardController::class, 'handleLogin']);
+Route::post('/store-user', [DashboardController::class, 'handleRegister']);
+Route::post('/logout', [DashboardController::class, 'logout']);

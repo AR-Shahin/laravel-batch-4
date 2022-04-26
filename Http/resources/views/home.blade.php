@@ -16,6 +16,10 @@
 
     <div class="container mt-5">
         <a href="/create" class="btn btn-sm btn-warning">Create</a>
+        <form action="/logout" method="POST">
+            @csrf
+            <button class="btn btn-info">Logout</button>
+        </form>
         <table class="table table-bordered">
             <tr>
                 <th>SL</th>

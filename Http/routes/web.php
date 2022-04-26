@@ -26,6 +26,7 @@ Route::get('/create', function () {
 });
 
 
+Route::post('/delete/{id}', [DashboardController::class, 'delete'])->name('delete');
 Route::get('/home', [DashboardController::class, 'index']);
 Route::post('/store', [DashboardController::class, 'store']);
 Route::post('/auth', [DashboardController::class, 'handleLogin']);

@@ -99,4 +99,17 @@ class DashboardController extends Controller
     {
         return session('authToken');
     }
+
+    public function delete($id)
+    {
+
+        $url = $this->api . "products/delete/" . $id;
+        try {
+            $response = Http::withToken($this->authToken())->post($url);
+            // dd($response->json());
+            return redirect('home');
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
 }

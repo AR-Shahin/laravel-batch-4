@@ -37,6 +37,10 @@
                     </td>
                     <td>
                         <a href="" class="btn btn-sm btn-success">View</a>
+                        <form action="{{ route('delete', $product->id) }}" class="d-inline" method="POST">
+                            @csrf
+                            <button>Delete</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

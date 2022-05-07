@@ -27,8 +27,8 @@ Route::prefix('users')->controller(AuthController::class)->group(function () {
 
 
 # Product
-// ->middleware('auth:jwt_auth')
-Route::prefix('products')->controller(ProductController::class)->group(function () {
+// -
+Route::prefix('products')->controller(ProductController::class)->middleware('auth:jwt_auth')->group(function () {
     Route::get('/', 'index');
     Route::post('/', 'store');
     Route::get('view/{id}', 'view');

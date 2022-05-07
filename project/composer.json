@@ -6,14 +6,17 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "barryvdh/laravel-dompdf": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.2",
         "laravel/sanctum": "^2.14.1",
         "laravel/socialite": "^5.5",
         "laravel/tinker": "^2.7",
+        "spatie/laravel-backup": "^8.1",
         "tomfordrumm/jwt-auth": "dev-develop"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.6",
         "fakerphp/faker": "^1.9.1",
         "laravel/breeze": "^1.9",
         "laravel/sail": "^1.0.1",

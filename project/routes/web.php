@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorizationController;
 use App\Models\Post;
 use App\Models\Product;
 // use Barryvdh\DomPDF\PDF;
@@ -29,3 +30,6 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin_auth.php';
+
+
+Route::get('gate', [AuthorizationController::class, 'index'])->name('gate')->middleware(['can:isAdmin']);

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthorizationController;
+use App\Http\Controllers\PolicyController;
 use App\Models\Post;
 use App\Models\Product;
 // use Barryvdh\DomPDF\PDF;
@@ -33,3 +34,8 @@ require __DIR__ . '/admin_auth.php';
 
 
 Route::get('gate', [AuthorizationController::class, 'index'])->name('gate')->middleware(['can:isAdmin']);
+
+
+Route::get('policy', [PolicyController::class, 'index']);
+// Route::get('product/{product}', [PolicyController::class, 'show'])->name('view')->middleware('can:view,product');
+Route::get('product/{product}', [PolicyController::class, 'show'])->name('view');

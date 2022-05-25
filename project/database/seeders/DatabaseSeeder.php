@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        Product::factory(20)->create();
+        // Product::factory(20)->create();
 
         User::create([
             'name' => 'admin',
@@ -41,5 +41,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'role' => 'editor',
         ]);
+
+        Product::factory(15)->create();
     }
 }

@@ -28,7 +28,7 @@
                 </a>
               </li>
           <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{ route('agent.document.index') }}">
               <i class="nav-icon far fa-circle text-warning"></i>
               <p>Document</p>
             </a>

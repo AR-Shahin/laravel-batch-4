@@ -110,9 +110,9 @@
                 <td>${item.name}</td>
                 <td><img src="{{ asset('${item.image}') }}" width="80px"></td>
                 <td class="text-center">
-                    <a href="" class="btn btn-sm btn-success" data-id="${item.slug}" data-toggle="modal" data-target="#viewModal" id="viewRow"><i class="fa fa-eye"></i></a>
-                    <a href="" class="btn btn-sm btn-info" data-id="${item.slug}" data-toggle="modal" data-target="#editModal" id="editRow"><i class="fa fa-edit"></i></a>
-                    <a href="" id="deleteRow" class="btn btn-sm btn-danger" data-id="${item.slug}"><i class="fa fa-trash-alt"></i></a>
+                    <a href="" class="btn btn-sm btn-success" data-id="${item.id}" data-toggle="modal" data-target="#viewModal" id="viewRow"><i class="fa fa-eye"></i></a>
+                    <a href="" class="btn btn-sm btn-info" data-id="${item.id}" data-toggle="modal" data-target="#editModal" id="editRow"><i class="fa fa-edit"></i></a>
+                    <a href="" id="deleteRow" class="btn btn-sm btn-danger" data-id="${item.id}"><i class="fa fa-trash-alt"></i></a>
                 </td>
             </tr>
             `
@@ -128,6 +128,10 @@
     e.preventDefault();
     let name = $('#name');
     let nameError = $('#nameError');
+
+    let description = $('#description');
+    let descriptionError = $('#descriptionError');
+
     let image = $('#image');
     let imageError = $('#imageError');
     nameError.text('');
@@ -137,8 +141,14 @@
         return null;
     }
 
+    if(description.val() === ''){
+        descriptionError.text('Field Must not be Empty!')
+        return null;
+    }
+
     const data = new FormData();
     data.append('name',name.val());
+    data.append('description',description.val());
     data.append('image', document.getElementById('image').files[0]);
     const config = { headers: { 'Content-Type': 'multipart/form-data' } };
     //  console.log(image.files[0]);
@@ -148,11 +158,15 @@
         getAllData();
         setSuccessMessage();
         name.val('');
-        image.val(null)
+        name.val('');
+        description.val(null)
     })
     .catch((err)=>{
        if(err.response.data.errors.name){
            nameError.text(err.response.data.errors.name[0])
+       }
+       if(err.response.data.errors.description){
+            descriptionError.text(err.response.data.errors.description[0])
        }
        if(err.response.data.errors.image){
            imageError.text(err.response.data.errors.image[0])
@@ -165,8 +179,8 @@
 
 $('body').on('click','#deleteRow',function(e){
     e.preventDefault()
-    let slug = $(this).attr('data-id');
-    const url = `${base_url_admin}/document/${slug}`;
+    let id = $(this).attr('data-id');
+    const url = `${base_url_admin}/document/${id}`;
     console.log(url);
     deleteDataWithAlert(url,getAllData);
 })
@@ -174,8 +188,8 @@ $('body').on('click','#deleteRow',function(e){
 
 // view
 $('body').on('click','#viewRow',function(){
-    let slug = $(this).data('id');
-    axios.get(`${base_url_admin}/document/${slug}`)
+    let id = $(this).data('id');
+    axios.get(`${base_url_admin}/document/${id}`)
     .then(res=> {
         let {data:document} = res
         let viewData = $$('#viewData');
@@ -196,15 +210,15 @@ $('body').on('click','#viewRow',function(){
 
 // edit
 $('body').on('click','#editRow',function(){
-    let slug = $(this).data('id');
-    let url = `${base_url_admin}/document/${slug}`;
+    let id = $(this).data('id');
+    let url = `${base_url_admin}/document/${id}`;
     axios.get(url).then(res => {
         let {data} = res;
         let form = $$('#editForm');
         form.innerHTML = `<div class="form-group">
                 <label for="">Name</label>
                 <input type="text" class="form-control" id="edit_name" value="${data.name}">
-                <input type="hidden" id="edit_slug" value="${data.slug}">
+                <input type="hidden" id="edit_id" value="${data.id}">
                 <span class="text-danger" id="editNameError"></span>
             </div>
             <div class="form-group">
@@ -225,8 +239,8 @@ $('body').on('click','#editRow',function(){
 // update
 $('body').on('submit','#editForm',function(e){
     e.preventDefault()
-    let slug = $('#edit_slug').val();
-    let url = `${base_url_admin}/document/${slug}`;
+    let id = $('#edit_id').val();
+    let url = `${base_url_admin}/document/${id}`;
     let editImage = $('#editImage');
     let editName = $('#edit_name')
 

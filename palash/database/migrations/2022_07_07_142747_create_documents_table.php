@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('agent_id')->constrained('agents')->onDelete('cascade');
+            $table->string('name');
+            $table->string('image');
+            $table->text('description');
             $table->timestamps();
         });
     }

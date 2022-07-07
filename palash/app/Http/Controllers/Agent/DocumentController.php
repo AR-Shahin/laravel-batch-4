@@ -21,10 +21,16 @@ class DocumentController extends Controller
     }
     function store(Request $request)
     {
+        $request->validate([
+            "name" => ['required'],
+            "description" => ['required'],
+            "image" => ['required','mimes:png,jpg'],
+        ]);
         $document =  Document::create([
             'name' => $request->name,
-            'slug' => $request->name,
-            'image' => File::upload($request->file('image'), 'do$document')
+            'description' => $request->description,
+            'agent_id' => auth('agent')->id(),
+            'image' => File::upload($request->file('image'), 'document')
         ]);
         if ($document) {
             return true;

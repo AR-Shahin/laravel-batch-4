@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Agent\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AgentAuthRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use App\Http\Requests\Auth\LoginRequest;
@@ -27,13 +28,13 @@ class AuthenticatedSessionController extends Controller
      * @param  \App\Http\Requests\Auth\LoginRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(SellerLoginRequest $request)
+    public function store(AgentAuthRequest $request)
     {
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::SELLER_HOME);
+        return redirect()->route('agent.dashboard');
     }
 
     /**

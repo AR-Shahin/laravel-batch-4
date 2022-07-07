@@ -16,3 +16,4 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/admin_auth.php';
 require __DIR__ . '/admin.php';
 require __DIR__ . '/seller.php';
+require __DIR__ . '/agent.php';

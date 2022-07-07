@@ -1,6 +1,6 @@
 @extends('layouts.backend_app')
 
-@section('title' ,'Admin Login')
+@section('title' ,'Seller Registration')
 
 @section('app_content')
 <div class="login-page">
@@ -8,13 +8,22 @@
         <!-- /.login-logo -->
         <div class="card">
           <div class="card-body login-card-body">
-            <h3 class="login-box-msg">Admin Login</h3>
+            <h3 class="login-box-msg">Seller Registration</h3>
 
-            <form action="{{ route('admin.login') }}" method="post">
-                @if(session('status'))
-                <span class="text-success">{{ session('status') }}</span>
-                @endisset
+            <form action="{{ route('seller.store') }}" method="post">
+
                 @csrf
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Enter Your Name" name="name">
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span class="fas fa-envelope"></span>
+                      </div>
+                    </div>
+                  </div>
+                  @error('name')
+                  <span class="text-danger">{{ $message }}</span>
+                  @enderror
               <div class="input-group mb-3">
                 <input type="email" class="form-control" placeholder="Enter Your Email" name="email">
                 <div class="input-group-append">
@@ -24,6 +33,17 @@
                 </div>
               </div>
               @error('email')
+              <span class="text-danger">{{ $message }}</span>
+              @enderror
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Enter Your Phone" name="phone">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                  </div>
+                </div>
+              </div>
+              @error('phone')
               <span class="text-danger">{{ $message }}</span>
               @enderror
               <div class="input-group mb-3">
@@ -38,28 +58,17 @@
               <span class="text-danger">{{ $message }}</span>
               @enderror
               <div class="row">
-                <div class="col-8">
-                  <div class="icheck-primary">
-                    <input type="checkbox" id="remember">
-                    <label for="remember">
-                      Remember Me
-                    </label>
-                  </div>
-                </div>
+
                 <!-- /.col -->
                 <div class="col-4">
-                  <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                  <button type="submit" class="btn btn-primary btn-block">Register</button>
                 </div>
                 <!-- /.col -->
               </div>
             </form>
 
-
-            {{-- <p class="mb-1">
-              <a href="{{ route('admin.password.request') }}">I forgot my password</a>
-            </p> --}}
             <p class="mb-0">
-              <a href="" class="text-center">Register</a>
+              <a href="{{ route('seller.login') }}" class="text-center">Login</a>
             </p>
           </div>
           <!-- /.login-card-body -->

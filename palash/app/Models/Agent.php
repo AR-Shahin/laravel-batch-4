@@ -23,7 +23,8 @@ class Agent extends Authenticatable
         'name',
         'email',
         'password',
-        "seller_id"
+        "seller_id",
+        "phone"
     ];
 
     /**

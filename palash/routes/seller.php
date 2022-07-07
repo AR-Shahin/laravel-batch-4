@@ -5,7 +5,7 @@ use App\Http\Controllers\Seller\Auth\{
     RegisteredUserController,
     AuthenticatedSessionController,
 };
-use App\Http\Controllers\Seller\{DashboardController};
+use App\Http\Controllers\Seller\{AgentController, DashboardController};
 
 Route::prefix('seller')->as('seller.')->group(function () {
 
@@ -30,7 +30,17 @@ Route::prefix('seller')->as('seller.')->group(function () {
 
 
     # Dash
+    Route::middleware('auth:seller')->group(function(){
+        Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
 
-    Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
+        # Agent
+        Route::controller(AgentController::class)->prefix('agent')->name('agent.')->group(function(){
+            Route::get('index','index')->name('index');
+            Route::get('create','create')->name('create');
+            Route::post('store','store')->name('store');
+            Route::delete('delete/{admin}','delete')->name('delete');
+        });
+
+    });
 
 });

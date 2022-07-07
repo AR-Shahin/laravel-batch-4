@@ -23,7 +23,7 @@
 
 
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin.post.index') }}">
+            <a class="nav-link" href="{{ route('seller.agent.index') }}">
               <i class="nav-icon far fa-circle text-warning"></i>
               <p>Agent</p>
             </a>

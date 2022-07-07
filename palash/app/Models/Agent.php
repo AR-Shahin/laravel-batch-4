@@ -46,4 +46,8 @@ class Agent extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function seller(){
+        return $this->belongsTo(Seller::class);
+    }
+
 }

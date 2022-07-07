@@ -31,7 +31,7 @@ Route::prefix('agent')->as('agent.')->group(function () {
             Route::get('get-all-data', 'getAllData')->name('get-all-data');
             Route::get('/', 'index')->name('index');
             Route::post('store', 'store')->name('store');
-            Route::delete('{document}', 'destroy')->name('destroy');
+            Route::delete('delete/{document}', 'destroy')->name('destroy');
             Route::get('{document}', 'show')->name('view');
 
             Route::post('{document}', 'update')->name('update');

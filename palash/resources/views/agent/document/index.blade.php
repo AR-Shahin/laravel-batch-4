@@ -180,7 +180,7 @@
 $('body').on('click','#deleteRow',function(e){
     e.preventDefault()
     let id = $(this).attr('data-id');
-    const url = `${base_url_admin}/document/${id}`;
+    const url = `${window.location.href}/agent/document/delete/${id}`;
     console.log(url);
     deleteDataWithAlert(url,getAllData);
 })
@@ -189,9 +189,12 @@ $('body').on('click','#deleteRow',function(e){
 // view
 $('body').on('click','#viewRow',function(){
     let id = $(this).data('id');
-    axios.get(`${base_url_admin}/document/${id}`)
+    let url = `${window.location.href}/agent/document/${id}`
+    log(url)
+    axios.get(url)
     .then(res=> {
         let {data:document} = res
+        log(res)
         let viewData = $$('#viewData');
         viewData.innerHTML = `
         <table class="table table-bordered">

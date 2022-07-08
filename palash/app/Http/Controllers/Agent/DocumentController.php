@@ -62,12 +62,11 @@ class DocumentController extends Controller
 
         if ($request->file('image')) {
             $request->validate([
-                'image' => ['required', 'image', 'mimes:png,jpg,jpeg']
+                "image" => ['required','mimes:png,jpg,docx,pdf'],
             ]);
             $olgImage = $document->image;
             $document =   $document->update([
                 'name' => $request->name,
-                'slug' => $request->name,
                 'image' => File::upload($request->file('image'), 'do$document')
             ]);
             File::deleteFile($olgImage);

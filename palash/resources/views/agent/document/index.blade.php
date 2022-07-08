@@ -88,6 +88,7 @@
       </div>
     </div>
   </div>
+
 @endsection
 
 @push('script')
@@ -214,6 +215,10 @@ $('body').on('click','#viewRow',function(){
                 <th>Document</th>
                 <td> <a href="{{ asset('${document.image}') }}">Document</a></td>
             </tr>
+            <tr>
+                <th>Desciption</th>
+                <td> <textarea name="" id="description" cols="30" rows="10" class="form-control">${document.description} </textarea></td>
+            </tr>
         </table>
         `
     });
@@ -222,7 +227,7 @@ $('body').on('click','#viewRow',function(){
 // edit
 $('body').on('click','#editRow',function(){
     let id = $(this).data('id');
-    let url = `${base_url_admin}/document/${id}`;
+    let url = `${window.location.origin}/agent/document/${id}`;
     axios.get(url).then(res => {
         let {data} = res;
         let form = $$('#editForm');
@@ -237,6 +242,7 @@ $('body').on('click','#editRow',function(){
                 <input name="image" type="file" class="form-control" id="editImage">
                 <span class="text-danger" id="imageEditError"></span> <br>
                 <img src="{{ asset('${data.image}') }}" alt="" width="100px" class="mt-3">
+                <a href="{{ asset('${data.image}') }}">Document</a>
             </div>
             <div class="form-group">
                 <button class="btn btn-success btn-block">Update</button>
@@ -251,7 +257,7 @@ $('body').on('click','#editRow',function(){
 $('body').on('submit','#editForm',function(e){
     e.preventDefault()
     let id = $('#edit_id').val();
-    let url = `${base_url_admin}/document/${id}`;
+    let url = `${window.location.origin}/agent/document/${id}`;
     let editImage = $('#editImage');
     let editName = $('#edit_name')
 

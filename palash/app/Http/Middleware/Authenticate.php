@@ -20,6 +20,16 @@ class Authenticate extends Middleware
                 return route('admin.login');
             }
         }
+        if ($request->is('seller/*')) {
+            if (!Auth::guard('seller')->check()) {
+                return route('seller.login');
+            }
+        }
+        if ($request->is('agent/*')) {
+            if (!Auth::guard('agent')->check()) {
+                return route('agent.login');
+            }
+        }
         // elseif (!Auth::guard('web')->check()) {
         //     return route('login');
         // }

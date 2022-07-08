@@ -245,6 +245,12 @@ $('body').on('click','#editRow',function(){
                 <a href="{{ asset('${data.image}') }}">Document</a>
             </div>
             <div class="form-group">
+                <tr>
+                <th>Desciption</th>
+                <td> <textarea name="" id="edit_description" cols="30" rows="10" class="form-control">${data.description} </textarea></td>
+            </tr>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-success btn-block">Update</button>
             </div>
             `
@@ -259,7 +265,8 @@ $('body').on('submit','#editForm',function(e){
     let id = $('#edit_id').val();
     let url = `${window.location.origin}/agent/document/${id}`;
     let editImage = $('#editImage');
-    let editName = $('#edit_name')
+    let editName = $('#edit_name');
+    let description = $('#edit_description');
 
     let editNameError = $('#editNameError')
     let imageEditError = $('#imageEditError')
@@ -268,6 +275,7 @@ $('body').on('submit','#editForm',function(e){
     if(editImage.val()){
         const data = new FormData();
         data.append('name',editName.val());
+        data.append('description',description.val());
         data.append('image', document.getElementById('editImage').files[0]);
         // log(data.get('image'))
         const config = { headers: { 'Content-Type': 'multipart/form-data' } };
@@ -282,7 +290,7 @@ $('body').on('submit','#editForm',function(e){
        }
         })
     }else{
-        sendUpdateAjaxRequest(url,{name: editName.val()}).then(res => {
+        sendUpdateAjaxRequest(url,{name: editName.val(),description:description.val()}).then(res => {
             getAllData();
             setSuccessMessage('Data Update Successfully!')
             $('#editModal').modal('toggle')

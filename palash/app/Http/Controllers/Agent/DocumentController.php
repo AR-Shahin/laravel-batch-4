@@ -67,13 +67,14 @@ class DocumentController extends Controller
             $olgImage = $document->image;
             $document =   $document->update([
                 'name' => $request->name,
-                'image' => File::upload($request->file('image'), 'do$document')
+                'description' => $request->description,
+                'image' => File::upload($request->file('image'), 'document')
             ]);
             File::deleteFile($olgImage);
         } else {
             $document =   $document->update([
                 'name' => $request->name,
-                'slug' => $request->name
+                'description' => $request->description
             ]);
         }
 

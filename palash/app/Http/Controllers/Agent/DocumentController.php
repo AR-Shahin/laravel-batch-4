@@ -24,7 +24,7 @@ class DocumentController extends Controller
         $request->validate([
             "name" => ['required'],
             "description" => ['required'],
-            "image" => ['required','mimes:png,jpg'],
+            "image" => ['required','mimes:png,jpg,docx,pdf'],
         ]);
         $document =  Document::create([
             'name' => $request->name,

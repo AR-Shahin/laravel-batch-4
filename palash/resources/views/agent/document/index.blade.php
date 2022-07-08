@@ -14,6 +14,7 @@
                     <tr>
                         <th>SL</th>
                         <th>Name</th>
+                        <th>Document</th>
                         <th>Image</th>
                         <th>Actions</th>
                     </tr>
@@ -40,7 +41,7 @@
                         <span class="text-danger" id="descriptionError"></span>
                     </div>
                     <div class="form-group">
-                        <label for="">Image</label>
+                        <label for="">Document</label>
                         <input type="file" class="form-control" id="image">
                         <span class="text-danger" id="imageError"></span>
                     </div>
@@ -108,7 +109,9 @@
             <tr>
                 <td>${++index}</td>
                 <td>${item.name}</td>
+
                 <td><img src="{{ asset('${item.image}') }}" width="80px"></td>
+                <td>  <a href="{{ asset('${item.image}') }}">Document</a></td>
                 <td class="text-center">
                     <a href="" class="btn btn-sm btn-success" data-id="${item.id}" data-toggle="modal" data-target="#viewModal" id="viewRow"><i class="fa fa-eye"></i></a>
                     <a href="" class="btn btn-sm btn-info" data-id="${item.id}" data-toggle="modal" data-target="#editModal" id="editRow"><i class="fa fa-edit"></i></a>

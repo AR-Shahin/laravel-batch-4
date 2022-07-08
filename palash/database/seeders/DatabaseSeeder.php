@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
+use App\Models\Agent;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Seller;
 use App\Models\SubCategory;
 use Illuminate\Database\Seeder;
 
@@ -28,8 +30,10 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password')
         ]);
         // \App\Models\Admin::factory(10)->create();
-        Category::factory(5)->create();
-        SubCategory::factory(5)->create();
-        Product::factory(10)->create();
+        // Category::factory(5)->create();
+        // SubCategory::factory(5)->create();
+        // Product::factory(10)->create();
+        Seller::factory(8)->create();
+        Agent::factory(20)->create();
     }
 }

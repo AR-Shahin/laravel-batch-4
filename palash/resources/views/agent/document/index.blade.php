@@ -210,6 +210,10 @@ $('body').on('click','#viewRow',function(){
                 <th>Image</th>
                 <td><img src="{{ asset('${document.image}') }}" width="100px" alt=""></td>
             </tr>
+            <tr>
+                <th>Document</th>
+                <td> <a href="{{ asset('${document.image}') }}">Document</a></td>
+            </tr>
         </table>
         `
     });

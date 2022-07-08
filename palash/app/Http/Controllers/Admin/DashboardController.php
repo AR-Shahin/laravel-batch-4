@@ -18,4 +18,17 @@ class DashboardController extends Controller
         $sellers = Seller::with('agents')->get();
         return view('backend.seller',compact('sellers'));
     }
+
+    function sellerWithAgents(Seller $seller){
+        $seller = $seller->load('agents');
+        return view('backend.agents',compact('seller'));
+
+    }
+
+    public function delete(Seller $seller)
+    {
+        $seller->delete();
+
+        return back();
+    }
 }

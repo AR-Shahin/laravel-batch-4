@@ -15,6 +15,8 @@ Route::prefix('admin')->as('admin.')->middleware(['auth:admin'])->group(function
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('seller', [DashboardController::class, 'seller'])->name('seller');
+    Route::get('sellers/{seller}', [DashboardController::class, 'sellerWithAgents'])->name('agents');
+    Route::delete('sellers/{seller}', [DashboardController::class, 'delete'])->name('delete');
 
 
 

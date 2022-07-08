@@ -1,8 +1,9 @@
 
 @extends('layouts.backend_master')
-@section('title', 'Category')
+@section('title', 'Seller')
 @section('master_content')
-<div class="container">
+<div class="container mt-3">
+    <h4>Total Seller</h4>
     <table id="table_id" class="display">
         <thead>
             <tr>
@@ -21,7 +22,14 @@
                 <td>{{ $seller->phone }}</td>
                 <td>{{ $seller->agents->count() }}</td>
                 <td>
-                    <a href="" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                    <a href="{{ route('admin.agents',$seller->id) }}" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+
+                    <form action="{{ route('admin.delete',$seller->id) }}" class="d-inline" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button onclick=" return confirm('Are you Sure Delete This Data?')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                       </form>
+
                 </td>
             @endforeach
         </tbody>

@@ -183,7 +183,8 @@
 $('body').on('click','#deleteRow',function(e){
     e.preventDefault()
     let id = $(this).attr('data-id');
-    const url = `${window.location.href}/agent/document/delete/${id}`;
+    const url = `${window.location.origin}/agent/document/delete/${id}`;
+    log(url)
     console.log(url);
     deleteDataWithAlert(url,getAllData);
 })
@@ -192,7 +193,7 @@ $('body').on('click','#deleteRow',function(e){
 // view
 $('body').on('click','#viewRow',function(){
     let id = $(this).data('id');
-    let url = `${window.location.href}/agent/document/${id}`
+    let url = `${window.location.origin}/agent/document/${id}`
     log(url)
     axios.get(url)
     .then(res=> {
